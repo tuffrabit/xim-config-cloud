@@ -20,6 +20,19 @@ $.fn.serializeObject = function() {
     return o;
 };
 
+function findConfig(id) {
+    var config = {};
+
+    for (var i = 0; i < configurationsData.configurations.length; i++) {
+        if (id == configurationsData.configurations[i].id) {
+            config = configurationsData.configurations[i];
+            break;
+        }
+    }
+
+    return config;
+}
+
 $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
     options.url = 'http://xim.schucreations.com/api' + options.url;
 });
@@ -43,8 +56,9 @@ var ConfigListView = Backbone.View.extend({
 
 var ConfigEditView = Backbone.View.extend({
     render: function(options) {
+        var config = findConfig(options.id);
         var template = _.template($('#config-edit-template').html());
-        var modal = $("#modal").html(template);
+        var modal = $("#modal").html(template({ config: config }));
         modal.modal('show');
     }
 });

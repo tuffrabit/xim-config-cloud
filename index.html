@@ -80,11 +80,24 @@
                     <h4 class="modal-title" id="myModalLabel">Configuration Details</h4>
                 </div>
                 <div class="modal-body">
-                    stuff will go here... i ran out of time
+                    <form role="form">
+                        <div class="form-group">
+                            <p>Creator: <%- config.creator %></p>
+                            <label for="game">Game</label>
+                            <input type="text" id="game" value="<%- config.game %>" class="form-control" />
+                            <label for="device">Device</label>
+                            <input type="text" id="device" value="<%- config.device %>" class="form-control" />
+                            <label for="system">System</label>
+                            <input type="text" id="system" value="<%- config.system %>" class="form-control" />
+                            <label for="ballistics">Ballistics</label>
+                            <textarea id="ballistics" class="form-control" rows="4"><%- config.value %></textarea>
+                            <p>Rating: <%- (config.positive_votes - config.negative_votes) %></p>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
                 </div>
             </div>
         </div>
